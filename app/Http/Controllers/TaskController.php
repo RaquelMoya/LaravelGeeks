@@ -68,6 +68,14 @@ class TaskController extends Controller
     }
     public function updateOne(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'title' => 'string',
+            'description' => 'string'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
         $userId = auth()->user()->id;
         $task = Task::where('user_id', $userId)->findOrFail($id);
 

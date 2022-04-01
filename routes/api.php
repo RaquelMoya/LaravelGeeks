@@ -30,6 +30,7 @@ Route::group([
     Route::delete('/task/{id}', [TaskController::class, 'delete']);    
     Route::post('/task', [TaskController::class, 'create']);    
     Route::get('/tasks_user', [TaskController::class, 'getAllByUser']);
+    Route::put('/task/{id}', [TaskController::class, 'updateOne']);
 });
 
 

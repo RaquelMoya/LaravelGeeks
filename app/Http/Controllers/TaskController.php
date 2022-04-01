@@ -66,6 +66,21 @@ class TaskController extends Controller
 
         return 'Task created';
     }
+    public function updateOne(Request $request, $id)
+    {
+
+        $task = Task::findOrFail($id);
+        if (isset($request->title)){
+            $task->title = $request->title;
+        }
+        if ($request->has('description')){
+            $task->description = $request->description;
+        }
+
+        $task->save();
+
+        return 'Task updated';
+    }
 
     public function getAllByUser()
     {

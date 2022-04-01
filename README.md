@@ -9,13 +9,13 @@
 
 ## How to run
 
--First, download files or clone the repository.
--composer install
--create .env and copy/paste content in .envExample. Introduce ddbb name and password of schema created in workbench.
--php artisan jwt:secret
--php artisan migrate
--php artisan db:seed
----------RUN---------
+-First, download files or clone the repository.</br>
+-composer install</br>
+-create .env and copy/paste content in .envExample. Introduce ddbb name and password of schema created in workbench.</br>
+-php artisan jwt:secret</br>
+-php artisan migrate</br>
+-php artisan db:seed</br>
+---------RUN---------</br>
 
 ## About Laravel
 

@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolesUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +35,28 @@ Route::group([
     Route::get('/tasks_user', [TaskController::class, 'getAllByUser']);
     Route::put('/task/{id}', [TaskController::class, 'updateOne']);
 });
+
+//User
+
+Route::get('/user', [UserController::class, 'getRolByUser'])->middleware('jwt.auth','is_admin');
+
+//USERS
+
+Route::get('/users', [UserController::class, 'getAll']);
+Route::get('/user/{id}', [UserController::class, 'getOne']);
+Route::delete('/user/{id}', [UserController::class, 'delete']);
+Route::post('/user', [UserController::class, 'create']);
+Route::get('/users_role', [UserController::class, 'getAllByRole']);
+
+//ROLES
+
+Route::get('/roles', [RoleController::class, 'getAll']);
+Route::get('/role/{id}', [RoleController::class, 'getOne']);
+Route::delete('/role/{id}', [RoleController::class, 'delete']);
+Route::post('/role', [RoleController::class, 'create']);
+
+
+
 
 
 // Ejemplo middleware basico

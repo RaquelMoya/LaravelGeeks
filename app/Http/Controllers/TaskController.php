@@ -49,7 +49,7 @@ class TaskController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
-            'description' => 'required'
+            'description' => 'required|string'
         ]);
 
         if($validator->fails()){
@@ -68,8 +68,9 @@ class TaskController extends Controller
     }
     public function updateOne(Request $request, $id)
     {
+        $userId = auth()->user()->id;
+        $task = Task::where('user_id', $userId)->findOrFail($id);
 
-        $task = Task::findOrFail($id);
         if (isset($request->title)){
             $task->title = $request->title;
         }
